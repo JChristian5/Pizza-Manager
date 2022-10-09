@@ -4,10 +4,61 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="script.js" defer></script>
     <title>Pizza Management System</title>
 </head>
 <body>
-    
+    <div class="container-fluid" id="navbar">
+        Pizza Management System
+    </div>
+    <div class="container-fluid" id="imgcontainer">
+        <img src="images/pizza-heading.jpeg" alt="" class="headerimage" id="headerimage">
+    </div>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col description">
+                Welcome to the Pizza Management System! This system is designed to make the process of opening a pizza business easier for you as the owner. You will be able to manage the invetory of different toppings in your shop. It also has features that will help your pizza makers customize different types of pizzas. View the different features below.
+            </div>
+        </div>
+    </div>
+    <div class="container text-center mt-3 mb-3">
+        <div class="row">
+            <div class="col-md-6 col-xs-12">
+                <div class="manageheading text-center">
+                    Manage Toppings
+                </div>
+                <div class="optiondescription">
+                    For owner use only. This option will allow you to:
+                    <ul>
+                        <li>View available toppings</li>
+                        <li>Add toppings</li>
+                        <li>Delete a topping</li>
+                        <li>Update a topping</li>
+                        <li>Not make duplicate toppings</li>
+                    </ul>
+                    <button type="button" class="btn btn-secondary" onclick="window.location='links/toppings.html'">Manage Toppings</button>
+                </div>
+            </div>
+            <div class="col-md-6 col-xs-12">
+                <div class="manageheading text-center">
+                    Manage Pizzas
+                </div>
+                <div class="optiondescription">
+                    For pizza makers. This option will allow you to:
+                    <ul>
+                        <li>View a list of existing pizzas and toppings</li>
+                        <li>Create a new pizza and add toppings</li>
+                        <li>Delete a pizza</li>
+                        <li>Update a pizza</li>
+                        <li>Update toppings on a pizza</li>
+                        <li>Not enter duplicate pizzas</li>
+                    </ul>
+                    <button type="button" class="btn btn-secondary" onclick="window.location='links/pizzas.html'">Manage Pizzas</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
