@@ -20,19 +20,19 @@ submitToppings.addEventListener('click', () => {
         alert('Error! Make sure you entered a valid name for the toppings or entered a number larger than 0.');
         return;
     }
-    boxTopping.innerHTML = `${name}: ${number}`;
+    boxTopping.innerText = `${name}: ${number}`;
     submitList.appendChild(boxTopping);
     toppingsName.value = ''; //Deletes text inside input box
     toppingsNumber.value = ''; //Deletes text inside input box
 
     const editButton = document.createElement('button');
     editButton.classList.add('btn', 'btn-outline-primary');
-    editButton.innerHTML = 'Edit';
+    editButton.innerText = 'Edit';
     boxTopping.appendChild(editButton);
     
     const deleteButton = document.createElement('button');
     deleteButton.classList.add('btn', 'btn-outline-danger');
-    deleteButton.innerHTML = 'Delete';
+    deleteButton.innerText = 'Delete';
     boxTopping.appendChild(deleteButton); 
 
     deleteButton.addEventListener('click', () => {
@@ -42,7 +42,7 @@ submitToppings.addEventListener('click', () => {
     editButton.addEventListener ('click', () => {
         toppingsName.value = prompt('What would you like to rename your topping to?');
         toppingsNumber.value = prompt('How many of that topping do you have?');
-        boxTopping.innerHTML = `${toppingsName.value}: ${toppingsNumber.value}`;
+        boxTopping.innerText = `${toppingsName.value}: ${toppingsNumber.value}`;
         boxTopping.appendChild(editButton);
         boxTopping.appendChild(deleteButton);
     })
