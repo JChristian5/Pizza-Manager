@@ -35,5 +35,12 @@ submitToppings.addEventListener('click', () => {
         submitList.removeChild(boxTopping);
     });
 
+    editButton.addEventListener ('click', () => {
+        toppingsName.value = prompt('What would you like to rename your topping to?');
+        toppingsNumber.value = prompt('How many of that topping do you have?');
+        boxTopping.innerHTML = `${toppingsName.value}: ${toppingsNumber.value}`;
+        boxTopping.appendChild(editButton);
+        boxTopping.appendChild(deleteButton);
+    })
 });
 
