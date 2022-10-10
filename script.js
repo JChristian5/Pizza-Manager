@@ -16,6 +16,10 @@ submitToppings.addEventListener('click', () => {
     const boxTopping = document.createElement('div');
     let name = toppingsName.value;
     let number = toppingsNumber.value;
+    if(toppingsName.value === '' || toppingsNumber.value < 1) {
+        alert('Error! Make sure you entered a valid name for the toppings or entered a number larger than 0.');
+        return;
+    }
     boxTopping.innerHTML = `${name}: ${number}`;
     submitList.appendChild(boxTopping);
     toppingsName.value = ''; //Deletes text inside input box
