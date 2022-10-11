@@ -16,7 +16,7 @@ submitToppings.addEventListener('click', () => {
     const boxTopping = document.createElement('div');
     let name = toppingsName.value;
     let number = toppingsNumber.value;
-    if(toppingsName.value === '' || toppingsNumber.value < 1) {
+    if(toppingsName.value === '' || toppingsName.value >= 0 || toppingsName.value <= 0 || toppingsNumber.value < 1) {
         alert('Error! Make sure you entered a valid name for the toppings or entered a number larger than 0.');
         return;
     }
@@ -40,9 +40,15 @@ submitToppings.addEventListener('click', () => {
     });
 
     editButton.addEventListener ('click', () => {
-        toppingsName.value = prompt('What would you like to rename your topping to?');
-        toppingsNumber.value = prompt('How many of that topping do you have?');
-        boxTopping.innerText = `${toppingsName.value}: ${toppingsNumber.value}`;
+        let changedName = prompt('What would you like to rename your topping to?');
+        if(changedName === '' || changedName >= 0 || changedName <= 0) {
+            let changedName = prompt('Try again, name cannot be blank or a number');
+        }
+        let changedNumber = prompt('How many of that topping do you have?');
+        // if(changedNumber < 1) {
+        //     let changedNumber = prompt ('Try again, please enter a valid number');
+        // } Fix tomorrow
+        boxTopping.innerText = `${changedName}: ${changedNumber}`;
         boxTopping.appendChild(editButton);
         boxTopping.appendChild(deleteButton);
     })
