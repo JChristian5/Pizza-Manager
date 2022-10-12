@@ -16,8 +16,8 @@ submitToppings.addEventListener('click', () => {
     const boxTopping = document.createElement('div');
     let name = toppingsName.value;
     let number = toppingsNumber.value;
-    // Add character check for toppingsName so no numbers can be added to the name
-    if(toppingsName.value === '' || toppingsNumber.value < 1) {
+
+    if(toppingsName.value === '' || /^[a-zA-Z]*$/.test(toppingsName.value) === false || toppingsNumber.value < 1) {
         alert('Error! Make sure you entered a valid name for the toppings (toppings can not contain numbers) or entered a number larger than 0.');
         return;
     }
@@ -42,7 +42,7 @@ submitToppings.addEventListener('click', () => {
 
     editButton.addEventListener ('click', () => {
         let changedName = prompt('What would you like to rename your topping to?');
-        while(changedName === '' || changedName >= 0 || changedName <= 0) {
+        while(changedName === '' || changedName >= 0 || changedName <= 0 || /^[a-zA-Z]*$/.test(changedName) === false) {
             changedName = prompt('Try again, name cannot be blank or a number');
         }
         let changedNumber = prompt('How many of that topping do you have?');
