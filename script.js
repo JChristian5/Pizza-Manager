@@ -6,8 +6,6 @@ const submitToppings = document.querySelector('#submittoppings');
 const submitList = document.querySelector('#toppingslist');
 
 
-
-
 toppingsForm.addEventListener('submit', (e) => {
     e.preventDefault();
 });
@@ -21,6 +19,7 @@ submitToppings.addEventListener('click', () => {
         alert('Error! Make sure you entered a valid name for the toppings (toppings can not contain numbers) or entered a number larger than 0.');
         return;
     }
+
     boxTopping.innerText = `${name}: ${number}`;
     submitList.appendChild(boxTopping);
     toppingsName.value = ''; //Deletes text inside input box
@@ -52,6 +51,14 @@ submitToppings.addEventListener('click', () => {
         boxTopping.innerText = `${changedName}: ${changedNumber}`;
         boxTopping.appendChild(editButton);
         boxTopping.appendChild(deleteButton);
-    })
+    });
 });
 
+// Pizza Making
+// Add temp ingredients for now
+
+const pizzasForm = document.querySelector('#pizzasform');
+
+pizzasForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+});
