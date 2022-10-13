@@ -16,13 +16,18 @@ pizzasForm.addEventListener('submit', (e) => {
 
 let ingredientArray = [pepperoni, ham, bacon, jalapenos, pineapple];
 
-
+const pizzaList = document.querySelector('#pizzalist');
 
 submitPizza.addEventListener('click', () => {
     ingredientArray.forEach((ingredient) => {
         if(ingredient.checked === true) {
             console.log(ingredient.name);
             ingredient.value -= 1;
+
+            const toppingsListBox = document.createElement('div');
+            toppingsListBox.classList.add('mb-2');
+            toppingsListBox.innerText = `${ingredient.name}`;
+            pizzaList.appendChild(toppingsListBox);
         }
     });
 });
