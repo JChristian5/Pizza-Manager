@@ -10,8 +10,10 @@ toppingsForm.addEventListener('submit', (e) => {
     e.preventDefault();
 });
 
+let toppingsListArray = [];
+
 submitToppings.addEventListener('click', () => {
-    let toppingsListArray = [];
+    
 
     const boxTopping = document.createElement('div');
     let name = toppingsName.value;
