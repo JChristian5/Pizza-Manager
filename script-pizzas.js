@@ -13,12 +13,16 @@ const submitPizza = document.querySelector('#submitpizza')
 pizzasForm.addEventListener('submit', (e) => {
     e.preventDefault();
 });
+
 let ingredientArray = [pepperoni, ham, bacon, jalapenos, pineapple];
+
+
 
 submitPizza.addEventListener('click', () => {
     ingredientArray.forEach((ingredient) => {
         if(ingredient.checked === true) {
             console.log(ingredient.name);
+            ingredient.value -= 1;
         }
-    })
-})
+    });
+});
