@@ -11,9 +11,19 @@ toppingsForm.addEventListener('submit', (e) => {
 });
 
 submitToppings.addEventListener('click', () => {
+    let toppingsListArray = [];
+
     const boxTopping = document.createElement('div');
     let name = toppingsName.value;
     let number = toppingsNumber.value;
+
+    let toppingExists = toppingsListArray.includes(toppingsName.value);
+    if(toppingExists == true) {
+        alert('Error! Topping already exists!');
+        return;
+    }
+
+    toppingsListArray.push(name);
 
     if(toppingsName.value === '' || /^[a-zA-Z]*$/.test(toppingsName.value) === false || toppingsNumber.value < 1) {
         alert('Error! Make sure you entered a valid name for the toppings (toppings can not contain numbers) or entered a number larger than 0.');
@@ -58,7 +68,22 @@ submitToppings.addEventListener('click', () => {
 // Add temp ingredients for now
 
 const pizzasForm = document.querySelector('#pizzasform');
+const pepperoni = document.querySelector('#pepperoni');
+const ham = document.querySelector('#ham');
+const bacon = document.querySelector('#bacon');
+const jalapenos = document.querySelector('#jalapenos')
+const pineapple = document.querySelector('#pineapple');
+
+const submitPizza = document.querySelector('#submitpizza')
 
 pizzasForm.addEventListener('submit', (e) => {
     e.preventDefault();
 });
+
+submitPizza.addEventListener('click', () => {
+    if(pizzasForm.checked === true) {
+        console.log('true');
+    } else {
+        console.log('false');
+    }
+})
