@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <script src="/script.js" defer></script>
+    <script src="/script-pizzas.js" defer></script>
     <title>Manage Pizzas</title>
 </head>
 <body>
@@ -41,15 +41,18 @@
             <div class="col-6">
                 Create a Pizza
                 <form action="" id="pizzasform">
-                    <input type="checkbox">Pepperoni
-                    <input type="checkbox">Ham
-                    <input type="checkbox">Bacon
-                    <input type="checkbox">Jalapenos
-                    <input type="checkbox">Pineapple
+                    <input type="checkbox" name="pepperoni" id="pepperoni"><label for="pepperoni">Pepperoni</label>
+                    <input type="checkbox" name="ham" id="ham"><label for="ham">Ham</label>
+                    <input type="checkbox" name="bacon" id="bacon"><label for="bacon">Bacon</label>
+                    <input type="checkbox" name="jalapenos" id="jalapenos"><label for="jalapenos">Jalapenos</label>
+                    <input type="checkbox" name="pineapple" id="pineapple"><label for="pineapple">Pineapple</label>
                     <input type="submit" id="submitpizza">
                 </form>
             </div>
         </div>    
+    </div>
+    <div class="container text-center mt-1" id="pizzalist">
+
     </div>
 </body>
 </html>
