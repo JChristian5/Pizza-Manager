@@ -30,23 +30,33 @@ let ingredientArray = [pepperoni, ham, bacon, jalapenos, pineapple];
 
 const pizzaList = document.querySelector('#pizzalist');
 
-let ul = document.createElement('ul');
-ul.innerText = `Pizza Toppings`;
-
 submitPizza.addEventListener('click', () => {
+    const toppingsListBox = document.createElement('div');
+    toppingsListBox.classList.add('mb-2');
+    toppingsListBox.classList.add('border');
+    let ul = document.createElement('ul');
+    ul.innerText = `Pizza Toppings`;
+
+    const editButton = document.createElement('button');
+    editButton.classList.add('btn', 'btn-outline-primary');
+    editButton.innerText = 'Edit';
+
+    const deleteButton = document.createElement('button');
+    deleteButton.classList.add('btn', 'btn-outline-danger');
+    deleteButton.innerText = 'Delete';
+
     ingredientArray.forEach((ingredient) => {
         if(ingredient.checked === true) {
             console.log(ingredient.name);
             ingredient.value -= 1;
             
-            const toppingsListBox = document.createElement('div');
-            toppingsListBox.classList.add('mb-2');
-            toppingsListBox.classList.add('border'); 
             const li = document.createElement('li');
             li.innerText = `${ingredient.name}`;
             pizzaList.appendChild(toppingsListBox);
             toppingsListBox.appendChild(ul);
             ul.appendChild(li);
+            toppingsListBox.appendChild(editButton);
+            toppingsListBox.appendChild(deleteButton);
 
             pepperoniName.innerText = `Pepperoni: ${pepperoni.value}`;
             hamName.innerText = `Ham: ${ham.value}`;
