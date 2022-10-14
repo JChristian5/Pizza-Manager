@@ -69,4 +69,7 @@ submitPizza.addEventListener('click', () => {
             }
         }
     });
+    deleteButton.addEventListener('click', () => {
+        pizzaList.removeChild(toppingsListBox);
+    });
 });
