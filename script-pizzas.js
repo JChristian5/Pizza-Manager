@@ -67,9 +67,14 @@ submitPizza.addEventListener('click', () => {
                 ingredient.disabled = true;
                 ingredient.checked = false;
             }
+            ingredient.checked = false;
         }
     });
+    //Difficulty adding ingredients back to the checkbox value, fix later
     deleteButton.addEventListener('click', () => {
         pizzaList.removeChild(toppingsListBox);
     });
 });
+
+// Difficulty having editButton add/remove toppings
+// Difficulty not allowing user to enter duplicate pizza
