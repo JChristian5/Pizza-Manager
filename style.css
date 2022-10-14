@@ -3,6 +3,7 @@ html, body {
     padding: 0;
 }
 
+/*Classes and IDs used for all pages*/
 #navbar {
     background-color: #313639;
     color: #F5F5F5;
@@ -19,6 +20,11 @@ html, body {
     padding: 0;
 }
 
+ul {
+    list-style: none;
+}
+
+/*Classes used for index.html page*/
 .description {
     font-size: 24px;
 }
@@ -32,15 +38,13 @@ html, body {
     font-size: 16px;
 }
 
-ul {
-    list-style: none;
-}
-
+/*Classes used for pizzas.html page*/
 .strikethrough {
     text-decoration: line-through;
 }
 
 .border {
     border-style: solid;
-    border-radius: 25%;
+    
+    border-radius: 2%;
 }
