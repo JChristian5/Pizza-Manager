@@ -5,7 +5,6 @@ const pizzasForm = document.querySelector('#pizzasform');
 const pepperoni = document.querySelector('#pepperoni');
 const ham = document.querySelector('#ham');
 const bacon = document.querySelector('#bacon');
-    
 const jalapenos = document.querySelector('#jalapenos')
 const pineapple = document.querySelector('#pineapple');
 
@@ -54,6 +53,10 @@ submitPizza.addEventListener('click', () => {
             baconName.innerText = `Bacon: ${bacon.value}`;
             jalapenosName.innerText = `Jalapenos: ${jalapenos.value}`;
             pineappleName.innerText = `Pineapple: ${pineapple.value}`;
+            if(ingredient.value <= 0) {
+                ingredient.disabled = true;
+                ingredient.checked = false;
+            }
         }
     });
 });
