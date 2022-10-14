@@ -39,12 +39,7 @@ ul {
 }
 
 /*Classes used for pizzas.html page*/
-.strikethrough {
-    text-decoration: line-through;
-}
-
 .border {
     border-style: solid;
-    
     border-radius: 2%;
 }
