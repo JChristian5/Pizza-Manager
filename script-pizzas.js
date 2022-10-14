@@ -31,6 +31,9 @@ let ingredientArray = [pepperoni, ham, bacon, jalapenos, pineapple];
 
 const pizzaList = document.querySelector('#pizzalist');
 
+let ul = document.createElement('ul');
+ul.innerText = `Pizza Toppings`;
+
 submitPizza.addEventListener('click', () => {
     ingredientArray.forEach((ingredient) => {
         if(ingredient.checked === true) {
@@ -39,9 +42,12 @@ submitPizza.addEventListener('click', () => {
             
             const toppingsListBox = document.createElement('div');
             toppingsListBox.classList.add('mb-2');
-            toppingsListBox.classList.add('border');
-            toppingsListBox.innerText = `Pizza ${ingredient.name}`;
+            toppingsListBox.classList.add('border'); 
+            const li = document.createElement('li');
+            li.innerText = `${ingredient.name}`;
             pizzaList.appendChild(toppingsListBox);
+            toppingsListBox.appendChild(ul);
+            ul.appendChild(li);
 
             pepperoniName.innerText = `Pepperoni: ${pepperoni.value}`;
             hamName.innerText = `Ham: ${ham.value}`;
