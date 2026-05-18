@@ -1,32 +1,42 @@
 // Pizza Making
 // Add temp ingredients for now
 
+const toppings = JSON.parse(localStorage.getItem('toppings')) || [];
+
 const pizzasForm = document.querySelector('#pizzasform');
-const pepperoni = document.querySelector('#pepperoni');
-const ham = document.querySelector('#ham');
-const bacon = document.querySelector('#bacon');
-const jalapenos = document.querySelector('#jalapenos')
-const pineapple = document.querySelector('#pineapple');
+const ingredientsList = document.querySelector('#ingredientslist');
+const checkboxContainer = document.querySelector('#checkboxcontainer');
 
-const pepperoniName = document.querySelector('#pepperoniname');
-const hamName = document.querySelector('#hamname');
-const baconName = document.querySelector('#baconname');
-const jalapenosName = document.querySelector('#jalapenosname');
-const pineappleName = document.querySelector('#pineapplename');
+toppings.forEach(topping =>
+    {
+        //ingredient list first
+        const li = document.createElement('li');
+        li.innerText = `${topping.name}: ${topping.amount}`;
 
-pepperoniName.innerText = `Pepperoni: ${pepperoni.value}`;
-hamName.innerText = `Ham: ${ham.value}`;
-baconName.innerText = `Bacon: ${bacon.value}`;
-jalapenosName.innerText = `Jalapenos: ${jalapenos.value}`;
-pineappleName.innerText = `Pineapple: ${pineapple.value}`;
+        ingredientsList.appendChild(li);
 
-const submitPizza = document.querySelector('#submitpizza')
+        //next, checkbox container
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = topping.name;
+
+        const label = document.createElement('label');
+        label.htmlFor = topping.name;
+        label.innerText = topping.name;
+
+        const toppingCheckboxContainer = document.createElement('div');
+        toppingCheckboxContainer.appendChild(checkbox);
+        toppingCheckboxContainer.appendChild(label);
+        checkboxContainer.appendChild(toppingCheckboxContainer);
+    });
+
+const submitPizza = document.querySelector('#submitpizza');
 
 pizzasForm.addEventListener('submit', (e) => {
     e.preventDefault();
 });
 
-let ingredientArray = [pepperoni, ham, bacon, jalapenos, pineapple];
+// let ingredientArray = [pepperoni, ham, bacon, jalapenos, pineapple];
 
 const pizzaList = document.querySelector('#pizzalist');
 
@@ -45,31 +55,51 @@ submitPizza.addEventListener('click', () => {
     deleteButton.classList.add('btn', 'btn-outline-danger');
     deleteButton.innerText = 'Delete';
 
-    ingredientArray.forEach((ingredient) => {
-        if(ingredient.checked === true) {
-            console.log(ingredient.name);
-            ingredient.value -= 1;
-            
-            const li = document.createElement('li');
-            li.innerText = `${ingredient.name}`;
-            pizzaList.appendChild(toppingsListBox);
-            toppingsListBox.appendChild(ul);
-            ul.appendChild(li);
-            toppingsListBox.appendChild(editButton);
-            toppingsListBox.appendChild(deleteButton);
+    const checkedIngredients = document.querySelectorAll('#checkboxcontainer input:checked');
+    checkedIngredients.forEach((ingredient) => {
+        const li = document.createElement('li');
 
-            pepperoniName.innerText = `Pepperoni: ${pepperoni.value}`;
-            hamName.innerText = `Ham: ${ham.value}`;
-            baconName.innerText = `Bacon: ${bacon.value}`;
-            jalapenosName.innerText = `Jalapenos: ${jalapenos.value}`;
-            pineappleName.innerText = `Pineapple: ${pineapple.value}`;
-            if(ingredient.value <= 0) {
-                ingredient.disabled = true;
-                ingredient.checked = false;
-            }
-            ingredient.checked = false;
-        }
+        li.innerText = ingredient.id;
+
+        ul.appendChild(li);
+
+        const toppingObject = toppings.find(
+            topping => topping.name === ingredient.id
+        );
+        toppingObject.amount--;
+
+        ingredient.checked = false;
     });
+
+    pizzaList.appendChild(toppingsListBox);
+    toppingsListBox.appendChild(ul);
+    toppingsListBox.appendChild(editButton);
+    toppingsListBox.appendChild(deleteButton);
+    // ingredientArray.forEach((ingredient) => {
+    //     if(ingredient.checked === true) {
+    //         console.log(ingredient.name);
+    //         ingredient.value -= 1;
+            
+    //         const li = document.createElement('li');
+    //         li.innerText = `${ingredient.name}`;
+    //         pizzaList.appendChild(toppingsListBox);
+    //         toppingsListBox.appendChild(ul);
+    //         ul.appendChild(li);
+    //         toppingsListBox.appendChild(editButton);
+    //         toppingsListBox.appendChild(deleteButton);
+
+    //         // pepperoniName.innerText = `Pepperoni: ${pepperoni.value}`;
+    //         // hamName.innerText = `Ham: ${ham.value}`;
+    //         // baconName.innerText = `Bacon: ${bacon.value}`;
+    //         // jalapenosName.innerText = `Jalapenos: ${jalapenos.value}`;
+    //         // pineappleName.innerText = `Pineapple: ${pineapple.value}`;
+    //         if(ingredient.value <= 0) {
+    //             ingredient.disabled = true;
+    //             ingredient.checked = false;
+    //         }
+    //         ingredient.checked = false;
+    //     }
+    // });
     //Difficulty adding ingredients back to the checkbox value, fix later
     deleteButton.addEventListener('click', () => {
         pizzaList.removeChild(toppingsListBox);
