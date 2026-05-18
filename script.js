@@ -50,8 +50,6 @@ function displayToppings(name, number) {
         ) {
             changedName = prompt('Try again, name cannot be blank or a number');
         }
-        
-        name = changedName;
 
         let changedNumber = prompt('How many of that topping do you have?');
         
@@ -61,8 +59,6 @@ function displayToppings(name, number) {
         ) {
             changedNumber = prompt ('Try again, please enter a valid number');
         }
-        
-        number = changedNumber;
 
         boxTopping.innerText = `${changedName}: ${changedNumber}`;
         boxTopping.appendChild(editButton);
@@ -76,10 +72,13 @@ function displayToppings(name, number) {
 
         if (toppingIndex !== -1) {
             toppings[toppingIndex].name = changedName;
-            toppings[toppingsIndex].amount = Number(changedNumber);
+            toppings[toppingIndex].amount = Number(changedNumber);
         }
 
         localStorage.setItem('toppings', JSON.stringify(toppings));
+
+        name = changedName;
+        number = Number(changedNumber);
     });
 }
 
