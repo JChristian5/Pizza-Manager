@@ -54,8 +54,15 @@ function displayPizza(pizzaObject) {
                 toppingObject => toppingObject.name === topping
             );
             toppingObject.amount++;
-            
             const ingredientText = document.querySelector(`#${topping}-ingredient`);
+            ingredientText.style.color = '';
+            if (toppingObject.amount > 0)
+            {
+                const checkboxElement = document.querySelector(`#${topping}-container`);
+                checkboxElement.style.display = '';
+                checkboxElement.style.color = '';
+            }
+            
             ingredientText.innerText = `${toppingObject.name}: ${toppingObject.amount}`;
         });
 
@@ -96,6 +103,7 @@ toppings.forEach(topping =>
         toppingCheckboxContainer.appendChild(checkbox);
         toppingCheckboxContainer.appendChild(label);
         checkboxContainer.appendChild(toppingCheckboxContainer);
+        toppingCheckboxContainer.id = `${topping.name}-container`;
     });
 
 submitPizza.addEventListener('click', () => {
@@ -118,6 +126,16 @@ submitPizza.addEventListener('click', () => {
         );
 
         toppingObject.amount--;
+        //Check if ingredient is out
+        if (toppingObject.amount <= 0)
+        {
+            //ingredient list
+            const ingredientText = document.querySelector(`#${ingredient.id}-ingredient`);
+            ingredientText.style.color = 'grey';
+            //checkboxes
+            const checkboxElement = document.querySelector(`#${ingredient.id}-container`);
+            checkboxElement.style.display = 'none';
+        }
         const ingredientText = document.querySelector(`#${ingredient.id}-ingredient`);
 
         ingredientText.innerText = `${toppingObject.name}: ${toppingObject.amount}`;
